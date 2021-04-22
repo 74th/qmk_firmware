@@ -40,11 +40,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEBOUNCE 5
 
 #define JOYSTICK_BUTTON_COUNT 13
-#define JOYSTICK_AXES_COUNT 0
+#define JOYSTICK_AXES_COUNT 2
 
 #define RGB_DI_PIN D3
 #define RGBLED_NUM 9
-#define RGBLIGHT_ANIMATIONS
+// #define RGBLIGHT_DEFAULT_VAL 10
+#define RGBLIGHT_DEFAULT_HUE 180
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
