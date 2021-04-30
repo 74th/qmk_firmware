@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /*
  *    /-----+-----+-----+-----\
- *    | L00 | L01 | L02 | L03 |
+ *    | L00 | L01 | L02 | L03 | (L04)
  *    \-----+-----+-----+-----/
  *
  *    /-----+-----+-----+-----\
@@ -32,11 +32,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #define LAYOUT( \
-    L00, L01, L02, L03, \
+    L00, L01, L02, L03, L04,\
     L11, L13, L15, L17, \
     L10, L12, L14, L16, L18 \
   ) \
   { \
-    { L00, L01, L02, L03, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO }, \
+    { L00, L01, L02, L03, L04, KC_NO, KC_NO, KC_NO, KC_NO }, \
     { L10, L11, L12, L13, L14, L15, L16, L17, L18 } \
   }

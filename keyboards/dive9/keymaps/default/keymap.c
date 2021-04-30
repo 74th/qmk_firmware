@@ -26,7 +26,7 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_JOYPAD] = LAYOUT(
     //   |-----------+-----------+-----------+-----------|
-          KC_5, JS_BUTTON10,KC_BSPC,KC_ESC,
+            KC_5,     KC__VOLDOWN, KC__VOLUP,  KC_ESC,     KC_6,
     //   |-----------+-----------+-----------+-----------|
     //   |-----------+-----------+-----------+-----------|
           JS_BUTTON1, JS_BUTTON3, JS_BUTTON5, JS_BUTTON7,
