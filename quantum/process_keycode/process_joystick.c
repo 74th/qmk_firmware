@@ -29,9 +29,9 @@ bool process_joystick_buttons(uint16_t keycode, keyrecord_t *record) {
         return true;
     } else {
         if (record->event.pressed) {
-            joystick_status.buttons[(keycode - JS_BUTTON0) / 8] |= 1 << (keycode % 8);
+            joystick_status.buttons[(keycode - JS_BUTTON0) / 8] |= 1 << ((keycode - JS_BUTTON0) % 8);
         } else {
-            joystick_status.buttons[(keycode - JS_BUTTON0) / 8] &= ~(1 << (keycode % 8));
+            joystick_status.buttons[(keycode - JS_BUTTON0) / 8] &= ~(1 << ((keycode - JS_BUTTON0) % 8));
         }
 
         joystick_status.status |= JS_UPDATED;
