@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
-#define JOYSTICK_BUTTON_COUNT 15
+#define JOYSTICK_BUTTON_COUNT 14
 #define JOYSTICK_AXES_COUNT 2
 
 #define RGB_DI_PIN D3

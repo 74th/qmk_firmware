@@ -29,19 +29,17 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_KEYPAD] = LAYOUT(
     //     |-----------+-----------+-----------+-----------| (    )
-    //     |    10     |     11    |    12     |   Back    |
            JS_BUTTON9, JS_BUTTON10, JS_BUTTON11,JS_BUTTON12, MO(_FN),
     //     |-----------+-----------+-----------+-----------|
     //     |-----------+-----------+-----------+-----------|
-            JS_BUTTON0, JS_BUTTON2, JS_BUTTON4, JS_BUTTON6,
+            JS_BUTTON1, JS_BUTTON3, JS_BUTTON5, JS_BUTTON7,
     // |-----------+-----------+-----------+-----------+-----------|
-        JS_BUTTON7, JS_BUTTON1, JS_BUTTON3, JS_BUTTON5, JS_BUTTON8
+        JS_BUTTON0, JS_BUTTON2, JS_BUTTON4, JS_BUTTON6, JS_BUTTON8
     // |-----------+-----------+-----------+-----------+-----------|
     ),
     [_KEYPAD_R] = LAYOUT(
     //     |-----------+-----------+-----------+-----------| (    )
-    //     |    10     |     11    |    12     |   Back    |
-           JS_BUTTON9, JS_BUTTON10, JS_BUTTON11,JS_BUTTON12, MO(_FN),
+              _______,    _______,    _______,    _______,   MO(_FN),
     //     |-----------+-----------+-----------+-----------|
     //     |-----------+-----------+-----------+-----------|
               _______,    _______,    _______,    _______,
@@ -51,8 +49,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_POPN] = LAYOUT(
     //     |-----------+-----------+-----------+-----------| (    )
-    //     |   Quest   |   Sort    |   Rank    |   Back    |
-               KC_5,       KC_1,       KC_2,     KC_BSPC,    MO(_FN),
+    //     |   Quest   |   Sort    |  Option   |   Back    |
+               KC_5,       KC_1,       KC_0,     KC_BSPC,    MO(_FN),
     //     |-----------+-----------+-----------+-----------|
     //     |-----------+-----------+-----------+-----------|
               _______,    _______,    _______,    _______,
@@ -62,12 +60,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_FN] = LAYOUT(
     //   |-----------+-----------+-----------+-----------| (    )
-    //   | Volume Up |Volume Down|   Mute    |   ESC     |
-            KC_VOLU,    KC_VOLD,    KC_MUTE,    KC_ESC,   _______,
+    //   |    Tab    |   Enter   | Backspace |   ESC     |
+            KC_TAB,     KC_ENTER,   KC_BSPC,   KC_ESC,    _______,
     //   |-----------+-----------+-----------+-----------|
     //   |-----------+-----------+-----------+-----------|
-            _______,    _______,    _______,    _______,
+    //   | Volume Up |Volume Down|   Mute    |           |
+            KC_VOLU,    KC_VOLD,    KC_MUTE,   _______,
     // |-----------+-----------+-----------+-----------+-----------|
+    // |  2DX 1P   |   Pop'n   |  2DX 2P   |           |           |
        TO(_KEYPAD),TO(_POPN),TO(_KEYPAD_R),   _______,   _______
     // |-----------+-----------+-----------+-----------+-----------|
     )
@@ -81,28 +81,28 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (IS_LAYER_ON(_POPN)) {
         if (record->event.pressed) {
             switch (keycode) {
-                case JS_BUTTON7:
+                case JS_BUTTON0:
                     sethsv(HSV_WHITE, (LED_TYPE *)&led[0]);
                     break;
-                case JS_BUTTON0:
+                case JS_BUTTON1:
                     sethsv(HSV_YELLOW, (LED_TYPE *)&led[1]);
                     break;
-                case JS_BUTTON1:
+                case JS_BUTTON2:
                     sethsv(HSV_GREEN, (LED_TYPE *)&led[2]);
                     break;
-                case JS_BUTTON2:
+                case JS_BUTTON3:
                     sethsv(HSV_BLUE, (LED_TYPE *)&led[3]);
                     break;
-                case JS_BUTTON3:
+                case JS_BUTTON4:
                     sethsv(HSV_RED, (LED_TYPE *)&led[4]);
                     break;
-                case JS_BUTTON4:
+                case JS_BUTTON5:
                     sethsv(HSV_BLUE, (LED_TYPE *)&led[5]);
                     break;
-                case JS_BUTTON5:
+                case JS_BUTTON6:
                     sethsv(HSV_GREEN, (LED_TYPE *)&led[6]);
                     break;
-                case JS_BUTTON6:
+                case JS_BUTTON7:
                     sethsv(HSV_YELLOW, (LED_TYPE *)&led[7]);
                     break;
                 case JS_BUTTON8:
@@ -111,28 +111,28 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         } else {
             switch (keycode) {
-                case JS_BUTTON7:
+                case JS_BUTTON0:
                     sethsv(0, 0, 32, (LED_TYPE *)&led[0]);
                     break;
-                case JS_BUTTON0:
+                case JS_BUTTON1:
                     sethsv(43, 255, 32, (LED_TYPE *)&led[1]);
                     break;
-                case JS_BUTTON1:
+                case JS_BUTTON2:
                     sethsv(85, 255, 32, (LED_TYPE *)&led[2]);
                     break;
-                case JS_BUTTON2:
+                case JS_BUTTON3:
                     sethsv(170, 255, 32, (LED_TYPE *)&led[3]);
                     break;
-                case JS_BUTTON3:
+                case JS_BUTTON4:
                     sethsv(0, 255, 32, (LED_TYPE *)&led[4]);
                     break;
-                case JS_BUTTON4:
+                case JS_BUTTON5:
                     sethsv(170, 255, 32, (LED_TYPE *)&led[5]);
                     break;
-                case JS_BUTTON5:
+                case JS_BUTTON6:
                     sethsv(85, 255, 32, (LED_TYPE *)&led[6]);
                     break;
-                case JS_BUTTON6:
+                case JS_BUTTON7:
                     sethsv(43, 255, 32, (LED_TYPE *)&led[7]);
                     break;
                 case JS_BUTTON8:
@@ -143,36 +143,36 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
     } else {
         if (record->event.pressed) {
             switch (keycode) {
-                case JS_BUTTON7:
+                case JS_BUTTON0:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(HSV_BLUE, (LED_TYPE *)&led[0]);
                     } else {
                         sethsv(HSV_RED, (LED_TYPE *)&led[0]);
                     }
                     break;
-                case JS_BUTTON0:
+                case JS_BUTTON1:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(HSV_WHITE, (LED_TYPE *)&led[1]);
                     } else {
                         sethsv(HSV_RED, (LED_TYPE *)&led[1]);
                     }
                     break;
-                case JS_BUTTON1:
+                case JS_BUTTON2:
                     sethsv(HSV_WHITE, (LED_TYPE *)&led[2]);
                     break;
-                case JS_BUTTON2:
+                case JS_BUTTON3:
                     sethsv(HSV_BLUE, (LED_TYPE *)&led[3]);
                     break;
-                case JS_BUTTON3:
+                case JS_BUTTON4:
                     sethsv(HSV_WHITE, (LED_TYPE *)&led[4]);
                     break;
-                case JS_BUTTON4:
+                case JS_BUTTON5:
                     sethsv(HSV_BLUE, (LED_TYPE *)&led[5]);
                     break;
-                case JS_BUTTON5:
+                case JS_BUTTON6:
                     sethsv(HSV_WHITE, (LED_TYPE *)&led[6]);
                     break;
-                case JS_BUTTON6:
+                case JS_BUTTON7:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(HSV_RED, (LED_TYPE *)&led[7]);
                     } else {
@@ -189,36 +189,36 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
         } else {
             switch (keycode) {
-                case JS_BUTTON7:
+                case JS_BUTTON0:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(170, 255, 32, (LED_TYPE *)&led[0]);
                     } else {
                         sethsv(0, 255, 32, (LED_TYPE *)&led[0]);
                     }
                     break;
-                case JS_BUTTON0:
+                case JS_BUTTON1:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(0, 0, 32, (LED_TYPE *)&led[1]);
                     } else {
                         sethsv(0, 255, 32, (LED_TYPE *)&led[1]);
                     }
                     break;
-                case JS_BUTTON1:
+                case JS_BUTTON2:
                     sethsv(0, 0, 32, (LED_TYPE *)&led[2]);
                     break;
-                case JS_BUTTON2:
+                case JS_BUTTON3:
                     sethsv(170, 255, 32, (LED_TYPE *)&led[3]);
                     break;
-                case JS_BUTTON3:
+                case JS_BUTTON4:
                     sethsv(0, 0, 32, (LED_TYPE *)&led[4]);
                     break;
-                case JS_BUTTON4:
+                case JS_BUTTON5:
                     sethsv(170, 255, 32, (LED_TYPE *)&led[5]);
                     break;
-                case JS_BUTTON5:
+                case JS_BUTTON6:
                     sethsv(0, 0, 32, (LED_TYPE *)&led[6]);
                     break;
-                case JS_BUTTON6:
+                case JS_BUTTON7:
                     if (IS_LAYER_ON(_KEYPAD_R)) {
                         sethsv(0, 255, 32, (LED_TYPE *)&led[7]);
                     } else {
